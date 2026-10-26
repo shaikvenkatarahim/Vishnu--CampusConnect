@@ -1,326 +1,5 @@
 ```html
 <!DOCTYPE html>
-<html lang="en" class="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vishnu CampusConnect AI | VITB & SVECW</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#eef2ff',
-              100: '#e0e7ff',
-              500: '#6366f1',
-              600: '#4f46e5',
-              700: '#4338ca',
-              800: '#3730a3',
-              900: '#312e81',
-            },
-            emerald: {
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-            },
-            purple: {
-              500: '#a855f7',
-              600: '#9333ea',
-              700: '#7e22ce',
-            }
-          },
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-          },
-          animation: {
-            'gradient-x': 'gradient-x 15s ease infinite',
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            'gradient-x': {
-              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-            },
-            'float': {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-8px)' },
-            }
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-    .dark .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-    }
-    .dark .glass-nav {
-      background: rgba(15, 23, 42, 0.85);
-    }
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: rgba(156, 163, 175, 0.3);
-      border-radius: 20px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-      background: rgba(156, 163, 175, 0.5);
-    }
-    .glow-purple {
-      box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.3);
-    }
-    .glow-indigo {
-      box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.35);
-    }
-  </style>
-</head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
-
-  <!-- TOP ANNOUNCEMENT BANNER -->
-  <div class="bg-gradient-to-r from-indigo-900 via-purple-900 to-slate-900 text-purple-200 text-xs py-2 px-4 text-center font-medium shadow-md flex items-center justify-center gap-2 border-b border-white/10">
-    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">Tribute</span>
-    <span>Honoring Founder Chairman <strong>Dr. B.V. Raju</strong> & <strong>Smt. Sita Raju</strong> — Empowering Minds in Bhimavaram</span>
-  </div>
-
-  <!-- NAVIGATION HEADER -->
-  <header class="glass-nav sticky top-0 z-40 border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16 items-center">
-        <!-- Logo & Branding -->
-        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('notices')">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-purple-600 to-emerald-400 flex items-center justify-center text-white font-extrabold text-xl shadow-lg glow-indigo transform hover:scale-105 transition-all duration-300">
-            V
-          </div>
-          <div>
-            <h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-brand-900 to-purple-900 dark:from-white dark:via-purple-200 dark:to-indigo-300 bg-clip-text text-transparent flex items-center gap-2">
-              Vishnu CampusConnect
-              <span class="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-gradient-to-r from-brand-500 to-purple-600 text-white shadow-xs">AI 2.0</span>
-            </h1>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium hidden sm:block">VITB & SVECW Student Intelligence Hub</p>
-          </div>
-        </div>
-
-        <!-- Navigation Tabs Desktop -->
-        <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-100/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-800">
-          <button onclick="switchTab('notices')" id="nav-notices" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-2 bg-white dark:bg-slate-800 text-brand-600 dark:text-purple-400 shadow-sm">
-            <i class="fa-solid fa-bullhorn"></i> Notices
-          </button>
-          <button onclick="switchTab('tracker')" id="nav-tracker" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-purple-400">
-            <i class="fa-solid fa-layer-group"></i> Deadline Tracker
-          </button>
-          <button onclick="switchTab('ai-assistant')" id="nav-ai-assistant" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-purple-400">
-            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> Gemini Copilot
-          </button>
-          <button onclick="switchTab('campus-info')" id="nav-campus-info" class="nav-btn px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-300 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-brand-600 dark:hover:text-purple-400">
-            <i class="fa-solid fa-compass"></i> Campus Info
-          </button>
-        </nav>
-
-        <!-- Dark Mode & Actions -->
-        <div class="flex items-center gap-3">
-          <button onclick="toggleDarkMode()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all flex items-center justify-center border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-moon dark:hidden text-slate-700"></i>
-            <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
-          </button>
-          <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 text-xs font-bold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Semester Even 2026
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Navigation Bar -->
-    <div class="md:hidden border-t border-slate-200/80 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md px-2 py-2 flex justify-around">
-      <button onclick="switchTab('notices')" id="mob-nav-notices" class="mob-nav-btn flex flex-col items-center py-1 px-3 text-[11px] font-bold text-brand-600 dark:text-purple-400">
-        <i class="fa-solid fa-bullhorn text-base mb-1"></i> Notices
-      </button>
-      <button onclick="switchTab('tracker')" id="mob-nav-tracker" class="mob-nav-btn flex flex-col items-center py-1 px-3 text-[11px] font-medium text-slate-500 dark:text-slate-400">
-        <i class="fa-solid fa-layer-group text-base mb-1"></i> Tracker
-      </button>
-      <button onclick="switchTab('ai-assistant')" id="mob-nav-ai-assistant" class="mob-nav-btn flex flex-col items-center py-1 px-3 text-[11px] font-medium text-slate-500 dark:text-slate-400">
-        <i class="fa-solid fa-wand-magic-sparkles text-amber-400 text-base mb-1"></i> AI Assistant
-      </button>
-      <button onclick="switchTab('campus-info')" id="mob-nav-campus-info" class="mob-nav-btn flex flex-col items-center py-1 px-3 text-[11px] font-medium text-slate-500 dark:text-slate-400">
-        <i class="fa-solid fa-compass text-base mb-1"></i> Info
-      </button>
-    </div>
-  </header>
-
-  <!-- DYNAMIC HERO BANNER -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-brand-950 to-purple-950 text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-    <!-- Decorative background blobs -->
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="space-y-4 max-w-2xl text-center md:text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs text-purple-200">
-          <i class="fa-solid fa-graduation-cap text-emerald-400"></i> Vishnu Educational Society • Bhimavaram
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-          One Platform for <br class="hidden sm:inline"/>
-          <span class="bg-gradient-to-r from-emerald-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">VITB & SVECW Students</span>
-        </h2>
-        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-          Access verified campus updates, keep track of upcoming lab submissions & mid-exams, and get instant answers with our Gemini AI copilot.
-        </p>
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
-          <button onclick="switchTab('ai-assistant')" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-purple-600 hover:from-brand-600 hover:to-purple-700 text-white font-semibold text-xs sm:text-sm shadow-lg glow-purple transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-            <i class="fa-solid fa-sparkles text-amber-300"></i> Ask Gemini Copilot
-          </button>
-          <button onclick="switchTab('tracker')" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all flex items-center gap-2">
-            <i class="fa-solid fa-clock-rotate-left"></i> View Deadlines
-          </button>
-        </div>
-      </div>
-
-      <!-- Quick Metrics Card -->
-      <div class="w-full md:w-auto grid grid-cols-2 gap-4">
-        <div class="glass-card p-4 rounded-2xl border border-white/10 text-center min-w-[130px] transform hover:scale-105 transition-all">
-          <p class="text-xs text-purple-200 font-semibold uppercase tracking-wider">Active Notices</p>
-          <p class="text-3xl font-extrabold text-white mt-1">12</p>
-          <span class="text-[10px] text-emerald-400 flex items-center justify-center gap-1 mt-1">
-            <i class="fa-solid fa-circle-check"></i> Updated Today
-          </span>
-        </div>
-        <div class="glass-card p-4 rounded-2xl border border-white/10 text-center min-w-[130px] transform hover:scale-105 transition-all">
-          <p class="text-xs text-purple-200 font-semibold uppercase tracking-wider">Pending Labs</p>
-          <p id="hero-pending-count" class="text-3xl font-extrabold text-amber-400 mt-1">2</p>
-          <span class="text-[10px] text-slate-300 flex items-center justify-center gap-1 mt-1">
-            <i class="fa-solid fa-calendar"></i> Due This Week
-          </span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAIN CONTENT CONTAINER -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-    <!-- SECTION 1: FILTERABLE NOTICES -->
-    <section id="section-notices" class="space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800">
-        <!-- Search bar -->
-        <div class="relative w-full md:w-80">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-          <input type="text" id="notice-search" oninput="filterNotices()" placeholder="Search notices, exams, placements..." class="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-brand-500 focus:outline-none dark:text-white transition-all"/>
-        </div>
-
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap gap-2 w-full md:w-auto">
-          <button onclick="setNoticeFilter('all')" class="filter-btn active-filter px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-brand-600 text-white shadow-xs transition-all" data-category="all">All</button>
-          <button onclick="setNoticeFilter('Academic')" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" data-category="Academic">Academics</button>
-          <button onclick="setNoticeFilter('Examinations')" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" data-category="Examinations">Examinations</button>
-          <button onclick="setNoticeFilter('Placements')" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" data-category="Placements">Placements</button>
-          <button onclick="setNoticeFilter('Events')" class="filter-btn px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" data-category="Events">Events</button>
-        </div>
-      </div>
-
-      <!-- Notices Cards Grid -->
-      <div id="notices-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        <!-- Injected via JavaScript -->
-      </div>
-    </section>
-
-    <!-- SECTION 2: LAB & EXAM TRACKER -->
-    <section id="section-tracker" class="hidden space-y-6">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-          <h2 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            Lab & Exam Tracker
-            <span class="text-xs px-2.5 py-0.5 rounded-full bg-brand-100 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 font-semibold">Active Term</span>
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">Manage lab record deadlines, mid-term examinations, and capstone submissions.</p>
-        </div>
-        <button onclick="openModal('add-task-modal')" class="bg-gradient-to-r from-brand-600 to-purple-600 hover:from-brand-700 hover:to-purple-700 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl shadow-md glow-indigo flex items-center gap-2 transition-all transform hover:-translate-y-0.5">
-          <i class="fa-solid fa-plus"></i> Add New Deadline
-        </button>
-      </div>
-
-      <!-- Progress Card -->
-      <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800">
-        <div class="flex justify-between items-center mb-2">
-          <span class="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300">Completion Milestone Progress</span>
-          <span id="completion-rate" class="text-xs sm:text-sm font-bold text-brand-600 dark:text-purple-400">0% Done</span>
-        </div>
-        <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3.5 overflow-hidden p-0.5 border border-slate-200/50 dark:border-slate-700">
-          <div id="progress-bar-inner" class="bg-gradient-to-r from-emerald-400 via-brand-500 to-purple-600 h-2.5 rounded-full transition-all duration-700" style="width: 0%"></div>
-        </div>
-      </div>
-
-      <!-- Tasks List Table Container -->
-      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 overflow-hidden">
-        <div class="p-4 bg-slate-50/70 dark:bg-slate-800/50 border-b border-slate-200/80 dark:border-slate-800 flex justify-between items-center">
-          <h3 class="font-bold text-slate-800 dark:text-slate-200 text-xs sm:text-sm uppercase tracking-wider">Scheduled Submissions</h3>
-          <select id="task-filter-status" onchange="renderTasks()" class="text-xs border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-1.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none">
-            <option value="all">All Tasks</option>
-            <option value="Pending">Pending</option>
-            <option value="In Progress">In Progress</option>
-            <option value="Submitted">Submitted</option>
-          </select>
-        </div>
-        <div id="tasks-container" class="divide-y divide-slate-100 dark:divide-slate-800">
-          <!-- Injected via JS -->
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: GEMINI AI COPILOT -->
-    <section id="section-ai-assistant" class="hidden space-y-4">
-      <!-- AI Header Card -->
-      <div class="bg-gradient-to-r from-slate-900 via-purple-950 to-brand-950 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden border border-purple-500/20">
-        <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div>
-            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-[11px] font-bold border border-purple-500/30 inline-flex items-center gap-1.5 mb-2">
-              <i class="fa-solid fa-sparkles text-amber-400"></i> Powered by Gemini 1.5 Flash
-            </span>
-            <h2 class="text-2xl font-extrabold tracking-tight">Vishnu Smart AI Assistant</h2>
-            <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl">Ask anything about VITB & SVECW regulations, library hours, exam branch updates, or campus locations in Bhimavaram.</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
-            <span class="text-xs font-semibold text-emerald-300">Copilot Ready</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 h-[520px] flex flex-col overflow-hidden">
-        <!-- Prompt chips -->
-        <div class="p-3 bg-slate-50/80 dark:bg-slate-800/50 border-b border-slate-200/80
-```html
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -383,6 +62,83 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
 
+    <!-- LOGIN / ONBOARDING MODAL OVERLAY -->
+    <div id="loginScreen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8 relative border border-slate-100 animate-fade-in">
+            <!-- Header Logo -->
+            <div class="text-center mb-6">
+                <div class="inline-flex items-center justify-center w-14 h-14 bg-brand-600 text-white rounded-2xl shadow-lg mb-3">
+                    <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-slate-900">Welcome to CampusConnect</h2>
+                <p class="text-xs text-slate-500 mt-1">Sri Vishnu Educational Society Student Portal</p>
+            </div>
+
+            <!-- Login / Profile Registration Form -->
+            <form onsubmit="handleUserLogin(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-regular fa-user"></i>
+                        </span>
+                        <input type="text" id="loginName" required placeholder="e.g. Sai Teja" class="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Email Address <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-regular fa-envelope"></i>
+                        </span>
+                        <input type="email" id="loginEmail" required placeholder="e.g. saiteja@srivishnu.edu.in" class="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Phone Number <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                            <i class="fa-solid fa-phone text-xs"></i>
+                        </span>
+                        <input type="tel" id="loginPhone" pattern="[0-9]{10}" required placeholder="10-digit Mobile Number" class="w-full pl-9 pr-3 py-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Studying Year <span class="text-red-500">*</span></label>
+                        <select id="loginYear" required class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 text-xs bg-white cursor-pointer">
+                            <option value="">Select Year</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Department <span class="text-red-500">*</span></label>
+                        <select id="loginDept" required class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500 text-xs bg-white cursor-pointer">
+                            <option value="">Select Dept</option>
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="MECH">MECH</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="AI&DS">AI & DS</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 active:scale-95 text-white font-bold rounded-xl transition shadow-lg text-sm flex items-center justify-center gap-2 cursor-pointer mt-2">
+                    Enter Campus Portal <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
     <!-- Header / Navbar -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -418,10 +174,10 @@
                         <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full ring-2 ring-white"></span>
                     </button>
                     <div class="flex items-center space-x-3 pl-2 border-l border-slate-200">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="User Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-brand-500">
+                        <img id="userAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="User Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-brand-500">
                         <div class="hidden sm:block text-left">
-                            <span class="block text-sm font-semibold text-slate-800 leading-tight">Sai Teja</span>
-                            <span class="block text-xs text-slate-500">CSE • 3rd Year</span>
+                            <span id="userNameHeader" class="block text-sm font-semibold text-slate-800 leading-tight">Student</span>
+                            <span id="userDeptHeader" class="block text-xs text-slate-500">Department</span>
                         </div>
                     </div>
                 </div>
@@ -595,4 +351,691 @@
                     <h2 class="text-lg font-bold text-slate-900">Task & Assignment Tracker</h2>
                     <p class="text-xs text-slate-500">Track deadlines, pending homework, project milestones, and personal goals.</p>
                 </div>
-                <div class="flex items-center gap-2 w-full sm:
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <!-- Task Filter Tabs -->
+                    <div class="bg-slate-100 p-1 rounded-lg flex text-xs font-medium w-full sm:w-auto">
+                        <button onclick="filterTasks('all')" id="task-filter-all" class="task-filter-btn flex-1 sm:flex-none px-3 py-1.5 rounded-md bg-white shadow text-brand-700 font-semibold transition cursor-pointer">All</button>
+                        <button onclick="filterTasks('pending')" id="task-filter-pending" class="task-filter-btn flex-1 sm:flex-none px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition cursor-pointer">Pending</button>
+                        <button onclick="filterTasks('completed')" id="task-filter-completed" class="task-filter-btn flex-1 sm:flex-none px-3 py-1.5 rounded-md text-slate-600 hover:text-slate-900 transition cursor-pointer">Completed</button>
+                    </div>
+                    <button onclick="openModal('taskModal')" class="bg-brand-600 hover:bg-brand-700 active:scale-95 text-white text-xs font-semibold px-4 py-2 rounded-lg transition shadow flex items-center gap-1.5 whitespace-nowrap cursor-pointer">
+                        <i class="fa-solid fa-plus"></i> New Task
+                    </button>
+                </div>
+            </div>
+
+            <!-- Task Grid List -->
+            <div id="tasksList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Task items rendered dynamically by JS -->
+            </div>
+        </section>
+
+        <!-- TAB CONTENT: UPCOMING EVENTS -->
+        <section id="content-events" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900">Upcoming Campus Events & Activities</h2>
+                    <p class="text-xs text-slate-500">Explore hackathons, workshops, cultural shows, and department tournaments.</p>
+                </div>
+                <button onclick="openModal('eventModal')" class="bg-brand-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-brand-700 active:scale-95 transition flex items-center gap-2 cursor-pointer">
+                    <i class="fa-solid fa-plus"></i> Create Event
+                </button>
+            </div>
+
+            <div id="eventsList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Default Event 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-36 bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white flex flex-col justify-between relative">
+                            <span class="bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider w-fit">Tech Fest</span>
+                            <h3 class="text-lg font-bold">VISHNIKA 2026 Hackathon</h3>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-600 mb-4">36-hour annual national level hackathon focused on Web3, AI, and Sustainable Tech solutions.</p>
+                            <div class="space-y-2 text-xs text-slate-500">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-brand-600 w-4"></i> Nov 12 - Nov 14, 2026</div>
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> Auditorium, Block B</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-emerald-600">Registrations Open</span>
+                        <button onclick="registerForEvent(this, 'VISHNIKA 2026 Hackathon')" class="bg-brand-600 hover:bg-brand-700 active:scale-95 text-white text-xs px-3 py-1.5 rounded-md font-medium transition cursor-pointer">Register Now</button>
+                    </div>
+                </div>
+
+                <!-- Default Event 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-36 bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white flex flex-col justify-between relative">
+                            <span class="bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider w-fit">Cultural</span>
+                            <h3 class="text-lg font-bold">Annual Music & Dance Night</h3>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-600 mb-4">Unleash your artistic talent on stage! Solo singing, group dance, and battle of bands.</p>
+                            <div class="space-y-2 text-xs text-slate-500">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-brand-600 w-4"></i> Nov 20, 2026</div>
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> Open Air Theater</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-amber-600">Auditions Soon</span>
+                        <button onclick="registerForEvent(this, 'Annual Music & Dance Night')" class="bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 text-xs px-3 py-1.5 rounded-md font-medium transition cursor-pointer">Join Audition</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB CONTENT: STUDY RESOURCES -->
+        <section id="content-resources" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900 font-sans">Academic Resources & Notes</h2>
+                    <p class="text-xs text-slate-500">Download syllabus, lab manuals, and faculty notes.</p>
+                </div>
+                <div class="flex gap-2">
+                    <select id="resourceDeptFilter" onchange="filterResources()" class="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500 cursor-pointer">
+                        <option value="ALL">All Departments</option>
+                        <option value="CSE">Computer Science (CSE)</option>
+                        <option value="IT">Information Technology (IT)</option>
+                        <option value="ECE">Electronics (ECE)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold uppercase">
+                        <tr>
+                            <th class="p-4">Subject / Resource Name</th>
+                            <th class="p-4">Department</th>
+                            <th class="p-4">Semester</th>
+                            <th class="p-4">Shared By</th>
+                            <th class="p-4 text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resourcesTableBody" class="divide-y divide-slate-100">
+                        <tr class="hover:bg-slate-50 transition resource-row" data-dept="CSE">
+                            <td class="p-4 font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-file-pdf text-red-500 text-base"></i> Operating Systems Lecture Notes (Unit 1-4)
+                            </td>
+                            <td class="p-4 text-slate-600">CSE</td>
+                            <td class="p-4 text-slate-600">Sem 5</td>
+                            <td class="p-4 text-slate-600">Prof. Anitha M.</td>
+                            <td class="p-4 text-right">
+                                <button onclick="showToast('Downloading Operating Systems Notes...')" class="text-brand-600 hover:text-brand-800 font-semibold cursor-pointer">Download</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition resource-row" data-dept="IT">
+                            <td class="p-4 font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-file-code text-blue-500 text-base"></i> DBMS Lab Manual & Queries
+                            </td>
+                            <td class="p-4 text-slate-600">IT</td>
+                            <td class="p-4 text-slate-600">Sem 4</td>
+                            <td class="p-4 text-slate-600">Ramesh Kumar (TA)</td>
+                            <td class="p-4 text-right">
+                                <button onclick="showToast('Downloading DBMS Manual...')" class="text-brand-600 hover:text-brand-800 font-semibold cursor-pointer">Download</button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition resource-row" data-dept="ECE">
+                            <td class="p-4 font-semibold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-file-word text-blue-600 text-base"></i> VLSI Design Previous Question Papers
+                            </td>
+                            <td class="p-4 text-slate-600">ECE</td>
+                            <td class="p-4 text-slate-600">Sem 6</td>
+                            <td class="p-4 text-slate-600">Student Council</td>
+                            <td class="p-4 text-right">
+                                <button onclick="showToast('Downloading Question Papers...')" class="text-brand-600 hover:text-brand-800 font-semibold cursor-pointer">Download</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TAB CONTENT: DISCUSSIONS -->
+        <section id="content-discussions" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Student Discussion Forum</h2>
+                        <p class="text-xs text-slate-500">Ask questions, collaborate, and exchange peer guidance.</p>
+                    </div>
+                    <button onclick="openModal('discussionModal')" class="bg-brand-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-brand-700 active:scale-95 transition flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-comments"></i> Start Topic
+                    </button>
+                </div>
+                <div id="discussionsList" class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+                        <div class="flex justify-between text-xs text-slate-500 mb-1">
+                            <span>Posted by <strong>K. Varun (CSE)</strong></span>
+                            <span>15 mins ago</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 mb-1">Which elective should I choose for 6th Sem: Cloud Computing or Data Mining?</h4>
+                        <p class="text-xs text-slate-600 mb-3">Looking for advice regarding syllabus difficulty and placement opportunities for both choices.</p>
+                        <div class="flex items-center gap-4 text-xs text-brand-600 font-semibold">
+                            <span><i class="fa-regular fa-comment"></i> 8 Replies</span>
+                            <span class="text-slate-400">•</span>
+                            <button onclick="showToast('Opening reply thread...')" class="hover:underline cursor-pointer">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL: ADD ANNOUNCEMENT -->
+    <div id="announcementModal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="modal-overlay fixed inset-0" onclick="closeModal('announcementModal')"></div>
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full z-10 p-6 relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-amber-500"></i> Post Campus Announcement
+                </h3>
+                <button onclick="closeModal('announcementModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitAnnouncement(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Title</label>
+                    <input type="text" id="announcementTitle" required placeholder="e.g., Campus Placement Registration" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Category / Tag</label>
+                    <select id="announcementTag" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-amber-500">
+                        <option value="Official Announcement">Official Announcement</option>
+                        <option value="Placement Cell">Placement Cell</option>
+                        <option value="Exam Circular">Exam Circular</option>
+                        <option value="Department Update">Department Update</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Description Details</label>
+                    <textarea id="announcementDesc" rows="3" required placeholder="Write clear details of the notice..." class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                </div>
+                <div class="flex justify-end gap-2 border-t border-slate-100 pt-3">
+                    <button type="button" onclick="closeModal('announcementModal')" class="px-4 py-2 bg-slate-100 rounded-lg font-semibold text-slate-600 hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg shadow">Publish Announcement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD TASK -->
+    <div id="taskModal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="modal-overlay fixed inset-0" onclick="closeModal('taskModal')"></div>
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full z-10 p-6 relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-brand-600"></i> Add Task / Assignment
+                </h3>
+                <button onclick="closeModal('taskModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitTask(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Task Name</label>
+                    <input type="text" id="taskTitle" required placeholder="e.g., Submit DAA Assignment 2" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Course / Subject</label>
+                    <input type="text" id="taskSubject" required placeholder="e.g., Computer Science • DAA" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Due Date</label>
+                    <input type="date" id="taskDueDate" required class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+                <div class="flex justify-end gap-2 border-t border-slate-100 pt-3">
+                    <button type="button" onclick="closeModal('taskModal')" class="px-4 py-2 bg-slate-100 rounded-lg font-semibold text-slate-600 hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD EVENT -->
+    <div id="eventModal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="modal-overlay fixed inset-0" onclick="closeModal('eventModal')"></div>
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full z-10 p-6 relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-regular fa-calendar-plus text-emerald-600"></i> Host Campus Event
+                </h3>
+                <button onclick="closeModal('eventModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitEvent(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Event Title</label>
+                    <input type="text" id="eventTitle" required placeholder="e.g., AI Coding Workshop" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Event Category</label>
+                    <input type="text" id="eventCategory" required placeholder="e.g., Technical / Cultural / Sports" class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Date & Location</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="eventDate" required placeholder="Nov 18, 2026" class="p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500">
+                        <input type="text" id="eventLocation" required placeholder="Auditorium" class="p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Short Description</label>
+                    <textarea id="eventDesc" rows="2" required placeholder="Brief event summary..." class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                </div>
+                <div class="flex justify-end gap-2 border-t border-slate-100 pt-3">
+                    <button type="button" onclick="closeModal('eventModal')" class="px-4 py-2 bg-slate-100 rounded-lg font-semibold text-slate-600 hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow">Publish Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ADD DISCUSSION -->
+    <div id="discussionModal" class="fixed inset-0 z-50 flex items-center justify-center hidden p-4">
+        <div class="modal-overlay fixed inset-0" onclick="closeModal('discussionModal')"></div>
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full z-10 p-6 relative">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-comments text-brand-600"></i> Start Discussion Topic
+                </h3>
+                <button onclick="closeModal('discussionModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form onsubmit="submitDiscussion(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Topic Headline</label>
+                    <input type="text" id="discTitle" required placeholder="Ask a question or share ideas..." class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Details</label>
+                    <textarea id="discDesc" rows="3" required placeholder="Elaborate on your topic..." class="w-full p-2.5 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+                </div>
+                <div class="flex justify-end gap-2 border-t border-slate-100 pt-3">
+                    <button type="button" onclick="closeModal('discussionModal')" class="px-4 py-2 bg-slate-100 rounded-lg font-semibold text-slate-600 hover:bg-slate-200">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-lg shadow">Post Topic</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toastMessage">Action completed successfully!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>© 2026 Vishnu CampusConnect. All rights reserved.</p>
+            <p class="mt-1">Maintained by Vishnu Educational Society Student Tech Committee.</p>
+        </div>
+    </footer>
+
+    <!-- Tab Switching & Dynamic State JavaScript -->
+    <script>
+        // User State Data
+        let currentUser = null;
+
+        // Initializing Dynamic Data State
+        let tasks = [
+            { id: 1, title: "Submit Algorithm Analysis Project", subject: "CSE • DAA", dueDate: "2026-11-02", status: "pending" },
+            { id: 2, title: "DBMS SQL Lab Record Verification", subject: "CSE • DBMS", dueDate: "2026-11-04", status: "pending" },
+            { id: 3, title: "Register for Campus Hackathon", subject: "Events", dueDate: "2026-10-25", status: "completed" },
+            { id: 4, title: "Read OS Memory Management Notes", subject: "CSE • OS", dueDate: "2026-10-22", status: "completed" }
+        ];
+
+        let currentTaskFilter = 'all';
+
+        window.onload = function() {
+            renderTasks();
+        };
+
+        // LOGIN / REGISTRATION LOGIC
+        function handleUserLogin(event) {
+            event.preventDefault();
+            const name = document.getElementById('loginName').value.trim();
+            const email = document.getElementById('loginEmail').value.trim();
+            const phone = document.getElementById('loginPhone').value.trim();
+            const year = document.getElementById('loginYear').value;
+            const dept = document.getElementById('loginDept').value;
+
+            currentUser = { name, email, phone, year, dept };
+
+            // Update UI with User Profile Info
+            document.getElementById('userNameHeader').textContent = name;
+            document.getElementById('userDeptHeader').textContent = `${dept} • ${year}`;
+            
+            // Hide Login Overlay Screen
+            document.getElementById('loginScreen').classList.add('hidden');
+            
+            showToast(`Welcome to Vishnu CampusConnect, ${name}!`);
+        }
+
+        // Navigation Tab Switching
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-tab');
+                btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+            });
+
+            const activeContent = document.getElementById(`content-${tabName}`);
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+
+            if (activeContent) activeContent.classList.remove('hidden');
+            if (activeBtn) {
+                activeBtn.classList.add('active-tab');
+                activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+            }
+        }
+
+        // Global Search Logic
+        function handleGlobalSearch() {
+            const query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
+            if (!query) return;
+
+            // Simple search feedback notification
+            showToast(`Searching campus portal for "${query}"...`);
+        }
+
+        // Modal Handlers
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.add('hidden');
+        }
+
+        // Toast Feedback System
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMessage.textContent = msg;
+            toastIcon.className = isError 
+                ? "fa-solid fa-circle-xmark text-red-400" 
+                : "fa-solid fa-circle-check text-emerald-400";
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // TASK MANAGER LOGIC
+        function renderTasks() {
+            const tasksList = document.getElementById('tasksList');
+            let filtered = tasks;
+
+            if (currentTaskFilter === 'pending') {
+                filtered = tasks.filter(t => t.status === 'pending');
+            } else if (currentTaskFilter === 'completed') {
+                filtered = tasks.filter(t => t.status === 'completed');
+            }
+
+            // Update Header Counts
+            const pendingCount = tasks.filter(t => t.status === 'pending').length;
+            const completedCount = tasks.filter(t => t.status === 'completed').length;
+            document.getElementById('pendingCountBadge').textContent = pendingCount;
+            document.getElementById('completedCountBadge').textContent = completedCount;
+
+            if (filtered.length === 0) {
+                tasksList.innerHTML = `
+                    <div class="col-span-full text-center py-8 bg-white border border-slate-200 rounded-xl">
+                        <i class="fa-solid fa-clipboard-check text-3xl text-slate-300 mb-2"></i>
+                        <p class="text-sm font-semibold text-slate-600">No tasks found for this filter.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            tasksList.innerHTML = filtered.map(task => {
+                const isCompleted = task.status === 'completed';
+                return `
+                    <div class="task-card bg-white rounded-xl border border-slate-200 p-4 shadow-sm flex flex-col justify-between transition hover:border-brand-300">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded ${isCompleted ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}">
+                                    ${task.status}
+                                </span>
+                                <span class="text-[11px] text-slate-400"><i class="fa-regular fa-clock mr-1"></i>${task.dueDate}</span>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-900 ${isCompleted ? 'line-through text-slate-400' : ''}">${task.title}</h4>
+                            <p class="text-xs text-slate-500 mt-1">${task.subject}</p>
+                        </div>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3 mt-4">
+                            <button onclick="toggleTaskStatus(${task.id})" class="text-xs font-semibold ${isCompleted ? 'text-amber-600 hover:text-amber-800' : 'text-emerald-600 hover:text-emerald-800'} flex items-center gap-1 cursor-pointer">
+                                <i class="fa-solid ${isCompleted ? 'fa-arrow-rotate-left' : 'fa-check'}"></i> ${isCompleted ? 'Mark Pending' : 'Mark Complete'}
+                            </button>
+                            <button onclick="deleteTask(${task.id})" class="text-xs text-red-500 hover:text-red-700 cursor-pointer">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function filterTasks(filter) {
+            currentTaskFilter = filter;
+            document.querySelectorAll('.task-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'shadow', 'text-brand-700', 'font-semibold');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById(`task-filter-${filter}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-white', 'shadow', 'text-brand-700', 'font-semibold');
+                activeBtn.classList.remove('text-slate-600');
+            }
+
+            renderTasks();
+        }
+
+        function toggleTaskStatus(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task.status = task.status === 'completed' ? 'pending' : 'completed';
+                renderTasks();
+                showToast(`Task status updated to ${task.status}`);
+            }
+        }
+
+        function deleteTask(taskId) {
+            tasks = tasks.filter(t => t.id !== taskId);
+            renderTasks();
+            showToast('Task removed.');
+        }
+
+        function submitTask(event) {
+            event.preventDefault();
+            const title = document.getElementById('taskTitle').value;
+            const subject = document.getElementById('taskSubject').value;
+            const dueDate = document.getElementById('taskDueDate').value;
+
+            tasks.unshift({
+                id: Date.now(),
+                title,
+                subject,
+                dueDate,
+                status: 'pending'
+            });
+
+            renderTasks();
+            closeModal('taskModal');
+            showToast('New Task added successfully!');
+            event.target.reset();
+        }
+
+        // ANNOUNCEMENTS CREATION
+        function submitAnnouncement(event) {
+            event.preventDefault();
+            const title = document.getElementById('announcementTitle').value;
+            const tag = document.getElementById('announcementTag').value;
+            const desc = document.getElementById('announcementDesc').value;
+
+            const posterName = currentUser ? currentUser.name : 'Sai Teja';
+            const posterDept = currentUser ? `${currentUser.dept} Student` : 'Student Representative';
+
+            const postsContainer = document.getElementById('postsList');
+            const newAnnouncementHTML = `
+                <article class="bg-white rounded-xl border border-amber-200 p-5 shadow-sm border-l-4 border-l-amber-500 transition hover:shadow-md">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">
+                                <i class="fa-solid fa-bullhorn"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-900">${posterName} (${posterDept})</h3>
+                                <p class="text-xs text-slate-500">Official Announcement • Just now</p>
+                            </div>
+                        </div>
+                        <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">${tag}</span>
+                    </div>
+                    <h4 class="text-base font-bold text-slate-900 mb-2">${title}</h4>
+                    <p class="text-sm text-slate-700 mb-4 leading-relaxed">${desc}</p>
+                </article>
+            `;
+
+            postsContainer.insertAdjacentHTML('afterbegin', newAnnouncementHTML);
+            closeModal('announcementModal');
+            showToast('Announcement published to live feed!');
+            event.target.reset();
+        }
+
+        // EVENT CREATION & REGISTRATION
+        function submitEvent(event) {
+            event.preventDefault();
+            const title = document.getElementById('eventTitle').value;
+            const category = document.getElementById('eventCategory').value;
+            const date = document.getElementById('eventDate').value;
+            const location = document.getElementById('eventLocation').value;
+            const desc = document.getElementById('eventDesc').value;
+
+            const eventsList = document.getElementById('eventsList');
+            const newEventHTML = `
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="h-36 bg-gradient-to-r from-purple-600 to-indigo-600 p-4 text-white flex flex-col justify-between relative">
+                            <span class="bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider w-fit">${category}</span>
+                            <h3 class="text-lg font-bold">${title}</h3>
+                        </div>
+                        <div class="p-5">
+                            <p class="text-xs text-slate-600 mb-4">${desc}</p>
+                            <div class="space-y-2 text-xs text-slate-500">
+                                <div class="flex items-center gap-2"><i class="fa-regular fa-calendar text-brand-600 w-4"></i> ${date}</div>
+                                <div class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-600 w-4"></i> ${location}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-xs font-semibold text-emerald-600">Registrations Open</span>
+                        <button onclick="registerForEvent(this, '${title}')" class="bg-brand-600 hover:bg-brand-700 text-white text-xs px-3 py-1.5 rounded-md font-medium transition cursor-pointer">Register Now</button>
+                    </div>
+                </div>
+            `;
+
+            eventsList.insertAdjacentHTML('afterbegin', newEventHTML);
+            closeModal('eventModal');
+            showToast('Campus Event registered live!');
+            event.target.reset();
+        }
+
+        function registerForEvent(btn, eventName) {
+            btn.textContent = 'Registered ✓';
+            btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
+            btn.classList.add('bg-slate-300', 'text-slate-700', 'cursor-default');
+            btn.disabled = true;
+            showToast(`Registered for ${eventName}!`);
+        }
+
+        // DISCUSSIONS SUBMISSION
+        function submitDiscussion(event) {
+            event.preventDefault();
+            const title = document.getElementById('discTitle').value;
+            const desc = document.getElementById('discDesc').value;
+
+            const posterName = currentUser ? currentUser.name : 'Sai Teja';
+            const posterDept = currentUser ? currentUser.dept : 'CSE';
+
+            const discussionsList = document.getElementById('discussionsList');
+            const newDiscHTML = `
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-slate-300 transition">
+                    <div class="flex justify-between text-xs text-slate-500 mb-1">
+                        <span>Posted by <strong>${posterName} (${posterDept})</strong></span>
+                        <span>Just now</span>
+                    </div>
+                    <h4 class="font-bold text-slate-800 mb-1">${title}</h4>
+                    <p class="text-xs text-slate-600 mb-3">${desc}</p>
+                    <div class="flex items-center gap-4 text-xs text-brand-600 font-semibold">
+                        <span><i class="fa-regular fa-comment"></i> 0 Replies</span>
+                        <span class="text-slate-400">•</span>
+                        <button onclick="showToast('Opening reply thread...')" class="hover:underline cursor-pointer">Reply</button>
+                    </div>
+                </div>
+            `;
+
+            discussionsList.insertAdjacentHTML('afterbegin', newDiscHTML);
+            closeModal('discussionModal');
+            showToast('Discussion topic published!');
+            event.target.reset();
+        }
+
+        // CREATE GENERIC FEED POST
+        function createPost() {
+            const input = document.getElementById('postInput');
+            const text = input.value.trim();
+
+            if (!text) {
+                showToast("Please enter text before posting.", true);
+                return;
+            }
+
+            const posterName = currentUser ? currentUser.name : 'Sai Teja';
+            const posterDept = currentUser ? currentUser.dept : 'CSE';
+
+            const postsContainer = document.getElementById('postsList');
+            const newPostHTML = `
+                <article class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="w-10 h-10 rounded-full object-cover" alt="Avatar">
+                            <div>
+                                <h3 class="text-sm font-bold text-slate-900">${posterName}</h3>
+                                <p class="text-xs text-slate-500">${posterDept} • Just now</p>
+                            </div>
+                        </div>
+                        <span class="bg-brand-100 text-brand-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Student Post</span>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-4 leading-relaxed">${text}</p>
+                </article>
+            `;
+
+            postsContainer.insertAdjacentHTML('afterbegin', newPostHTML);
+            input.value = '';
+            showToast('Post added to Campus Feed!');
+        }
+
+        // FILTER RESOURCE TABLE
+        function filterResources() {
+            const val = document.getElementById('resourceDeptFilter').value;
+            const rows = document.querySelectorAll('.resource-row');
+            rows.forEach(row => {
+                if (val === 'ALL' || row.getAttribute('data-dept') === val) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```

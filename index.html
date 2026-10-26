@@ -319,3 +319,280 @@
       <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 h-[520px] flex flex-col overflow-hidden">
         <!-- Prompt chips -->
         <div class="p-3 bg-slate-50/80 dark:bg-slate-800/50 border-b border-slate-200/80
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vishnu CampusConnect</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .active-tab {
+            background-color: #0284c7;
+            color: white !important;
+        }
+        .active-tab:hover {
+            background-color: #0369a1;
+            color: white !important;
+        }
+        /* Custom modal backdrop animation */
+        .modal-overlay {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+        }
+        /* Smooth transitions for tabs and interactions */
+        .tab-btn {
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .task-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Brand Logo & Name -->
+                <div class="flex items-center space-x-3 cursor-pointer select-none" onclick="switchTab('feed')">
+                    <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-md">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-slate-900 leading-none">Vishnu <span class="text-brand-600">CampusConnect</span></h1>
+                        <p class="text-xs text-slate-500 font-medium">Sri Vishnu Educational Society</p>
+                    </div>
+                </div>
+
+                <!-- Global Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8">
+                    <div class="relative w-full">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" id="globalSearchInput" onkeyup="handleGlobalSearch()" placeholder="Search notices, tasks, events, or resources..." class="w-full pl-10 pr-4 py-2 rounded-lg bg-slate-100 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white text-sm transition">
+                    </div>
+                </div>
+
+                <!-- User Quick Controls -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="openModal('announcementModal')" class="hidden sm:flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white text-xs font-semibold px-3 py-2 rounded-lg transition shadow-sm cursor-pointer">
+                        <i class="fa-solid fa-bullhorn"></i> + Announcement
+                    </button>
+                    <button onclick="showToast('No new notifications')" class="relative p-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-full transition cursor-pointer">
+                        <i class="fa-regular fa-bell text-lg"></i>
+                        <span class="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full ring-2 ring-white"></span>
+                    </button>
+                    <div class="flex items-center space-x-3 pl-2 border-l border-slate-200">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="User Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-brand-500">
+                        <div class="hidden sm:block text-left">
+                            <span class="block text-sm font-semibold text-slate-800 leading-tight">Sai Teja</span>
+                            <span class="block text-xs text-slate-500">CSE • 3rd Year</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+        <!-- Banner Carousel / Welcome Header -->
+        <section class="bg-gradient-to-r from-brand-900 via-brand-800 to-brand-700 rounded-2xl p-6 sm:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl">
+                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Campus Action Hub</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Connect, Track Tasks & Stay Updated</h2>
+                <p class="text-brand-100 text-sm sm:text-base mb-6">Manage your pending assignments, post official campus announcements, and participate in upcoming events seamlessly.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="switchTab('tasks')" class="bg-white text-brand-900 font-semibold px-4 py-2 rounded-lg text-sm shadow hover:bg-brand-50 active:scale-95 transition flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-list-check text-brand-600"></i> Manage My Tasks
+                    </button>
+                    <button onclick="openModal('announcementModal')" class="bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-semibold px-4 py-2 rounded-lg text-sm shadow transition flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-bullhorn"></i> Post Announcement
+                    </button>
+                    <button onclick="switchTab('events')" class="bg-brand-700 hover:bg-brand-600 active:scale-95 text-white font-semibold px-4 py-2 rounded-lg text-sm transition border border-brand-500 flex items-center gap-2 cursor-pointer">
+                        <i class="fa-regular fa-calendar"></i> Upcoming Events
+                    </button>
+                </div>
+            </div>
+            <!-- Decorative Icon overlay -->
+            <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-10 text-[200px] text-white/5 pointer-events-none"></i>
+        </section>
+
+        <!-- Dynamic Navigation Tabs -->
+        <nav class="flex space-x-2 border-b border-slate-200 mb-8 overflow-x-auto pb-2 scrollbar-none">
+            <button onclick="switchTab('feed')" id="tab-feed" class="tab-btn px-4 py-2.5 font-medium text-sm rounded-lg whitespace-nowrap active-tab transition flex items-center gap-2">
+                <i class="fa-solid fa-newspaper"></i> News & Announcements
+            </button>
+            <button onclick="switchTab('tasks')" id="tab-tasks" class="tab-btn px-4 py-2.5 font-medium text-sm text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition flex items-center gap-2">
+                <i class="fa-solid fa-list-check"></i> Tasks & Assignments
+            </button>
+            <button onclick="switchTab('events')" id="tab-events" class="tab-btn px-4 py-2.5 font-medium text-sm text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition flex items-center gap-2">
+                <i class="fa-solid fa-calendar-days"></i> Upcoming Events
+            </button>
+            <button onclick="switchTab('resources')" id="tab-resources" class="tab-btn px-4 py-2.5 font-medium text-sm text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition flex items-center gap-2">
+                <i class="fa-solid fa-folder-open"></i> Study Resources
+            </button>
+            <button onclick="switchTab('discussions')" id="tab-discussions" class="tab-btn px-4 py-2.5 font-medium text-sm text-slate-600 hover:bg-slate-100 rounded-lg whitespace-nowrap transition flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i> Discussions
+            </button>
+        </nav>
+
+        <!-- TAB CONTENT: NEWS & ANNOUNCEMENTS -->
+        <section id="content-feed" class="tab-content grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Feed Left / Main Section -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Create Post & Quick Actions Card -->
+                <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="w-10 h-10 rounded-full object-cover" alt="Avatar">
+                        <input type="text" id="postInput" onkeydown="if(event.key === 'Enter') createPost()" placeholder="Share a post or notice with campus..." class="w-full bg-slate-100 hover:bg-slate-200/70 focus:bg-white rounded-full py-2 px-4 text-sm outline-none transition focus:ring-2 focus:ring-brand-500">
+                    </div>
+                    <div class="flex justify-between items-center border-t border-slate-100 pt-3 px-2">
+                        <div class="flex space-x-3 text-slate-500 text-xs font-medium">
+                            <button onclick="openModal('announcementModal')" class="hover:text-amber-600 flex items-center gap-1 font-semibold text-amber-600 cursor-pointer"><i class="fa-solid fa-bullhorn"></i> Announcement</button>
+                            <button onclick="openModal('taskModal')" class="hover:text-brand-600 flex items-center gap-1 cursor-pointer"><i class="fa-solid fa-plus text-brand-600"></i> Task</button>
+                            <button onclick="openModal('eventModal')" class="hover:text-emerald-600 flex items-center gap-1 cursor-pointer"><i class="fa-regular fa-calendar-plus text-emerald-600"></i> Event</button>
+                        </div>
+                        <button onclick="createPost()" class="bg-brand-600 text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-brand-700 active:scale-95 transition cursor-pointer">Post Feed</button>
+                    </div>
+                </div>
+
+                <!-- Dynamic Announcement & Post Feed List -->
+                <div id="postsList" class="space-y-6">
+                    <!-- Sample Official Announcement 1 -->
+                    <article class="bg-white rounded-xl border border-amber-200 p-5 shadow-sm border-l-4 border-l-amber-500">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-sm">
+                                    <i class="fa-solid fa-bullhorn"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-slate-900">Academic Affairs Cell</h3>
+                                    <p class="text-xs text-slate-500">Official Announcement • Today, 10:30 AM</p>
+                                </div>
+                            </div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Announcement</span>
+                        </div>
+                        <h4 class="text-base font-bold text-slate-900 mb-2">Registration Open for Campus Placement Prep Bootcamp</h4>
+                        <p class="text-sm text-slate-700 mb-4 leading-relaxed">
+                            All 3rd and 4th-year students are requested to complete their enrollment for the upcoming 4-week Technical Coding & Mock Interview series starting next Monday.
+                        </p>
+                        <div class="flex items-center justify-between bg-amber-50/50 border border-amber-100 p-3 rounded-lg mb-4">
+                            <span class="text-xs text-amber-900 font-medium"><i class="fa-solid fa-clock text-amber-600 mr-1"></i> Deadline: Nov 05, 2026</span>
+                            <button onclick="switchTab('events')" class="text-amber-800 hover:text-amber-950 text-xs font-bold px-3 py-1 bg-amber-200/70 hover:bg-amber-300 rounded-md transition cursor-pointer">View Details</button>
+                        </div>
+                    </article>
+
+                    <!-- Sample Circular 2 -->
+                    <article class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center font-bold text-sm">
+                                    EC
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-slate-900">Exam Cell Vishnu</h3>
+                                    <p class="text-xs text-slate-500">Official Circular • 2 hours ago</p>
+                                </div>
+                            </div>
+                            <span class="bg-red-100 text-red-700 text-xs font-semibold px-2.5 py-0.5 rounded-full">Important</span>
+                        </div>
+                        <p class="text-sm text-slate-700 mb-4 leading-relaxed">
+                            Mid-Semester examinations schedule for B.Tech 2nd & 3rd Year students has been published. Please check your respective departmental notice boards or download the PDF schedule below.
+                        </p>
+                        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 p-3 rounded-lg mb-4">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-file-pdf text-red-500 text-2xl"></i>
+                                <div>
+                                    <p class="text-xs font-semibold text-slate-800">Mid_Sem_TimeTable_2026.pdf</p>
+                                    <p class="text-[10px] text-slate-500">1.4 MB • PDF</p>
+                                </div>
+                            </div>
+                            <button onclick="showToast('Downloading timetable file...')" class="text-brand-600 hover:text-brand-800 text-xs font-semibold px-3 py-1 bg-brand-50 hover:bg-brand-100 rounded-md border border-brand-200 transition cursor-pointer">Download</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Feed Right Sidebar -->
+            <div class="space-y-6">
+                <!-- Task Summary Widget -->
+                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brand-600"></i> My Tasks Overview
+                        </h3>
+                        <button onclick="switchTab('tasks')" class="text-xs text-brand-600 font-semibold hover:underline cursor-pointer">View All</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 text-center mb-3">
+                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100 cursor-pointer" onclick="switchTab('tasks'); filterTasks('pending');">
+                            <span id="pendingCountBadge" class="block text-xl font-bold text-amber-700">2</span>
+                            <span class="text-[11px] font-semibold text-amber-800 uppercase">Pending</span>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100 cursor-pointer" onclick="switchTab('tasks'); filterTasks('completed');">
+                            <span id="completedCountBadge" class="block text-xl font-bold text-emerald-700">2</span>
+                            <span class="text-[11px] font-semibold text-emerald-800 uppercase">Completed</span>
+                        </div>
+                    </div>
+                    <button onclick="openModal('taskModal')" class="w-full py-2 bg-brand-50 hover:bg-brand-100 text-brand-700 text-xs font-bold rounded-lg transition border border-brand-200 flex items-center justify-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-plus"></i> Add New Task
+                    </button>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-link text-brand-600"></i> Campus Portals
+                    </h3>
+                    <ul class="space-y-2 text-xs font-medium text-slate-600">
+                        <li><a href="javascript:void(0)" onclick="showToast('Redirecting to Student ERP Portal...')" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 hover:text-brand-600 transition"><span>Student ERP Login</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i></a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Redirecting to Digital Library Portal...')" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 hover:text-brand-600 transition"><span>Digital Library Access</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i></a></li>
+                        <li><a href="javascript:void(0)" onclick="showToast('Redirecting to Placement Portal...')" class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 hover:text-brand-600 transition"><span>Placement Portal</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB CONTENT: TASKS & ASSIGNMENTS (Interactive Task Manager) -->
+        <section id="content-tasks" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                <div>
+                    <h2 class="text-lg font-bold text-slate-900">Task & Assignment Tracker</h2>
+                    <p class="text-xs text-slate-500">Track deadlines, pending homework, project milestones, and personal goals.</p>
+                </div>
+                <div class="flex items-center gap-2 w-full sm:
